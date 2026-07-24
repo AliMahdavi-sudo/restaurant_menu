@@ -1,25 +1,1442 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>My Picture</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #000;
-    }
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 12px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی دیجیتال | کافه رستوران</title>
+    <meta name="description" content="منوی دیجیتال حرفه‌ای کافه رستوران با طراحی لوکس و مدرن">
+    <meta property="og:title" content="منوی دیجیتال کافه رستوران">
+    <meta property="og:description" content="تجربه‌ای لوکس از منوی دیجیتال با طراحی منحصر‌به‌فرد">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           CSS VARIABLES
+           ============================================================ */
+        :root {
+            --color-primary: #162d1e;
+            --color-secondary: #af9468;
+            --color-primary-light: #1f3d2a;
+            --color-secondary-light: #c4a97d;
+            --color-secondary-dark: #8f7a54;
+
+            --gradient-primary: linear-gradient(135deg, #162d1e 0%, #af9468 100%);
+            --gradient-primary-reverse: linear-gradient(135deg, #af9468 0%, #162d1e 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(22, 45, 30, 0.05) 0%, rgba(175, 148, 104, 0.05) 100%);
+
+            --color-bg: #f8f6f2;
+            --color-surface: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-text-muted: #888888;
+            --color-border: #e8e4dc;
+            --color-shadow: rgba(22, 45, 30, 0.12);
+
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            --space-4xl: 80px;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+
+            --shadow-sm: 0 2px 8px rgba(22, 45, 30, 0.06);
+            --shadow-md: 0 6px 24px rgba(22, 45, 30, 0.10);
+            --shadow-lg: 0 12px 48px rgba(22, 45, 30, 0.14);
+            --shadow-xl: 0 20px 64px rgba(22, 45, 30, 0.18);
+            --shadow-hover: 0 16px 40px rgba(22, 45, 30, 0.16);
+
+            --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-base: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            --font-family: 'Vazirmatn', sans-serif;
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-md: 18px;
+            --font-size-lg: 22px;
+            --font-size-xl: 28px;
+            --font-size-2xl: 36px;
+            --font-size-3xl: 44px;
+            --font-size-4xl: 56px;
+
+            --z-back: -1;
+            --z-base: 1;
+            --z-sticky: 100;
+            --z-overlay: 200;
+            --z-modal: 300;
+            --z-tooltip: 400;
+            --z-toast: 500;
+        }
+
+        /* ============================================================
+           DARK MODE VARIABLES (پیش‌فرض حالت شب)
+           ============================================================ */
+        [data-theme="dark"] {
+            --color-bg: #0f1a13;
+            --color-surface: #1a2a1f;
+            --color-text: #ece8e0;
+            --color-text-secondary: #c4bdb0;
+            --color-text-muted: #8a8278;
+            --color-border: #2a3a2f;
+            --color-shadow: rgba(0, 0, 0, 0.4);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 64px rgba(0, 0, 0, 0.6);
+            --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.5);
+            --gradient-subtle: linear-gradient(135deg, rgba(22, 45, 30, 0.2) 0%, rgba(175, 148, 104, 0.1) 100%);
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color var(--transition-base), color var(--transition-base);
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: var(--font-family);
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-secondary);
+            border-radius: var(--radius-full);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-secondary-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.5px;
+            transition: color var(--transition-base);
+        }
+        [data-theme="dark"] .section-title {
+            color: var(--color-secondary-light);
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-xl);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ============================================================
+           LOADING ANIMATION
+           ============================================================ */
+        .loader-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: var(--z-toast);
+            background: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--color-border);
+            border-top-color: var(--color-secondary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ============================================================
+           HEADER / HERO
+           ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--color-primary);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/hero.jpg') center/cover no-repeat;
+            opacity: 0.35;
+            transition: opacity var(--transition-base);
+        }
+        [data-theme="dark"] .hero-bg {
+            opacity: 0.25;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 45, 30, 0.85) 0%, rgba(175, 148, 104, 0.40) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: var(--z-base);
+            text-align: center;
+            padding: var(--space-2xl) var(--space-lg);
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto var(--space-xl);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            transition: transform var(--transition-bounce), box-shadow var(--transition-base);
+        }
+        .hero-logo:hover {
+            transform: scale(1.04);
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-name {
+            font-size: clamp(var(--font-size-2xl), 6vw, var(--font-size-4xl));
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: var(--space-sm);
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-name span {
+            background: linear-gradient(135deg, #af9468 0%, #d4c09a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: var(--space-2xl);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: var(--z-base);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: var(--font-size-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            animation: float-down 2s ease-in-out infinite;
+        }
+        .hero-scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.4);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes float-down {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           CATEGORY NAVIGATION (Sticky)
+           ============================================================ */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            z-index: var(--z-sticky);
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-md) 0;
+            transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+        [data-theme="dark"] .category-nav {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+        }
+
+        .category-nav-scroll {
+            display: flex;
+            gap: var(--space-sm);
+            overflow-x: auto;
+            padding: var(--space-xs) var(--space-lg);
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+        }
+        .category-nav-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-nav-btn {
+            flex-shrink: 0;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-fast);
+            scroll-snap-align: start;
+            white-space: nowrap;
+        }
+        .category-nav-btn:hover {
+            color: var(--color-primary);
+            border-color: var(--color-secondary);
+            background: var(--gradient-subtle);
+        }
+        .category-nav-btn.active {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(175, 148, 104, 0.35);
+        }
+        [data-theme="dark"] .category-nav-btn {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+            color: var(--color-text-secondary);
+        }
+        [data-theme="dark"] .category-nav-btn:hover {
+            background: var(--color-primary-light);
+            color: var(--color-secondary-light);
+        }
+        [data-theme="dark"] .category-nav-btn.active {
+            background: var(--gradient-primary);
+            color: #ffffff;
+        }
+
+        /* ============================================================
+           MENU SECTIONS
+           ============================================================ */
+        .menu-section {
+            padding: var(--space-3xl) 0;
+            scroll-margin-top: 80px;
+            transition: background var(--transition-base);
+        }
+        .menu-section:nth-child(even) {
+            background: var(--gradient-subtle);
+        }
+        [data-theme="dark"] .menu-section:nth-child(even) {
+            background: rgba(22, 45, 30, 0.20);
+        }
+
+        .menu-section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: var(--space-2xl);
+        }
+        .menu-section-header .section-title {
+            font-size: clamp(var(--font-size-xl), 3vw, var(--font-size-2xl));
+        }
+
+        /* ============================================================
+           PRODUCT GRID
+           ============================================================ */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        /* ============================================================
+           PRODUCT CARD (فقط نمایشی)
+           ============================================================ */
+        .product-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(24px);
+            cursor: default;
+            pointer-events: none;
+            user-select: none;
+        }
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-secondary);
+        }
+        [data-theme="dark"] .product-card {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+        }
+        [data-theme="dark"] .product-card:hover {
+            border-color: var(--color-secondary-light);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            padding-top: 75%;
+            overflow: hidden;
+            background: var(--color-bg);
+            flex-shrink: 0;
+            pointer-events: none;
+        }
+        .product-image-wrapper img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        .product-card:hover .product-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .product-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-subtle);
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            font-weight: 400;
+            pointer-events: none;
+        }
+        [data-theme="dark"] .product-image-placeholder {
+            background: rgba(22, 45, 30, 0.3);
+            color: var(--color-text-muted);
+        }
+
+        .product-body {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .product-name {
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-xs);
+            transition: color var(--transition-base);
+        }
+        [data-theme="dark"] .product-name {
+            color: var(--color-text);
+        }
+
+        .product-description {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            font-weight: 300;
+            margin-bottom: var(--space-md);
+            flex: 1;
+            transition: color var(--transition-base);
+        }
+        [data-theme="dark"] .product-description {
+            color: var(--color-text-secondary);
+        }
+
+        .product-price {
+            font-size: var(--font-size-md);
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-top: auto;
+            transition: color var(--transition-base);
+        }
+        [data-theme="dark"] .product-price {
+            color: var(--color-secondary-light);
+        }
+
+        .product-price-dual {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+        .product-price-dual .price-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+        .product-price-dual .price-item .price-value {
+            font-weight: 700;
+            color: var(--color-secondary);
+            font-size: var(--font-size-md);
+        }
+        [data-theme="dark"] .product-price-dual .price-item .price-value {
+            color: var(--color-secondary-light);
+        }
+        .product-price-dual .price-item .price-label {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+
+        /* ============================================================
+           BACK TO TOP
+           ============================================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-2xl);
+            right: var(--space-2xl);
+            z-index: var(--z-tooltip);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-bounce);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            font-size: 20px;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        [data-theme="dark"] .back-to-top {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+            color: var(--color-secondary-light);
+        }
+        [data-theme="dark"] .back-to-top:hover {
+            background: var(--gradient-primary);
+            color: #ffffff;
+        }
+
+        /* ============================================================
+           DARK MODE TOGGLE
+           ============================================================ */
+        .dark-toggle {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            z-index: var(--z-sticky);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(4px);
+        }
+        .dark-toggle:hover {
+            transform: scale(1.06);
+            border-color: var(--color-secondary);
+        }
+        [data-theme="dark"] .dark-toggle {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+            color: var(--color-text);
+        }
+        [data-theme="dark"] .dark-toggle:hover {
+            border-color: var(--color-secondary-light);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: var(--space-lg);
+            }
+            .hero-logo {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --space-3xl: 40px;
+                --space-4xl: 56px;
+                --space-2xl: 32px;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+                padding: 4px;
+            }
+            .hero-name {
+                font-size: var(--font-size-2xl);
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-md);
+            }
+
+            .category-nav {
+                padding: var(--space-sm) 0;
+            }
+            .category-nav-btn {
+                padding: var(--space-xs) var(--space-md);
+                font-size: var(--font-size-xs);
+            }
+
+            .back-to-top {
+                width: 44px;
+                height: 44px;
+                bottom: var(--space-xl);
+                right: var(--space-xl);
+                font-size: 18px;
+            }
+
+            .dark-toggle {
+                top: var(--space-md);
+                right: var(--space-md);
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .product-body {
+                padding: var(--space-md);
+            }
+            .product-name {
+                font-size: var(--font-size-sm);
+            }
+            .product-description {
+                font-size: var(--font-size-xs);
+            }
+            .product-price {
+                font-size: var(--font-size-sm);
+            }
+            .product-price-dual .price-item {
+                font-size: var(--font-size-xs);
+            }
+            .product-price-dual .price-item .price-value {
+                font-size: var(--font-size-sm);
+            }
+
+            .menu-section {
+                padding: var(--space-2xl) 0;
+                scroll-margin-top: 64px;
+            }
+            .menu-section-header .section-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .hero-scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-sm);
+            }
+            .product-body {
+                padding: var(--space-sm);
+            }
+            .product-name {
+                font-size: var(--font-size-xs);
+            }
+            .product-description {
+                font-size: var(--font-size-xs);
+                margin-bottom: var(--space-xs);
+            }
+            .product-price {
+                font-size: var(--font-size-xs);
+            }
+            .product-price-dual .price-item {
+                font-size: var(--font-size-xs);
+            }
+            .product-price-dual .price-item .price-value {
+                font-size: var(--font-size-xs);
+            }
+            .category-nav-btn {
+                padding: var(--space-xs) var(--space-sm);
+                font-size: var(--font-size-xs);
+            }
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+                padding: 2px;
+            }
+            .hero-name {
+                font-size: var(--font-size-xl);
+            }
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: var(--space-lg);
+                right: var(--space-lg);
+            }
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--color-secondary);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        @media print {
+            .category-nav,
+            .back-to-top,
+            .dark-toggle,
+            .hero-scroll-indicator,
+            .loader-wrapper {
+                display: none !important;
+            }
+            .hero {
+                min-height: auto;
+                padding: var(--space-2xl) 0;
+            }
+            .product-card {
+                break-inside: avoid;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-  <img src="image.jpg" alt="My Picture">
+
+    <div class="loader-wrapper" id="loaderWrapper" role="status" aria-label="در حال بارگذاری">
+        <div class="loader"></div>
+        <span class="sr-only">در حال بارگذاری...</span>
+    </div>
+
+    <button class="dark-toggle" id="darkToggle" aria-label="تغییر حالت روز/شب" title="تغییر حالت روز/شب">
+        <span id="darkIcon">☀️</span>
+    </button>
+
+    <header class="hero" id="hero" role="banner">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="images/logo.png" alt="لوگو کافه رستوران" loading="lazy" width="120" height="120">
+            </div>
+            <h1 class="hero-name">
+                <span>کافه فکتوری</span>
+            </h1>
+        </div>
+        <div class="hero-scroll-indicator" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+            <span>اسکرول</span>
+        </div>
+    </header>
+
+    <nav class="category-nav" id="categoryNav" role="navigation" aria-label="دسته‌بندی منو">
+        <div class="category-nav-scroll" id="categoryScroll">
+            <button class="category-nav-btn active" data-target="hot-coffee">هات کافی</button>
+            <button class="category-nav-btn" data-target="hot-bar">هات بار</button>
+            <button class="category-nav-btn" data-target="ice-coffee">آیس کافی</button>
+            <button class="category-nav-btn" data-target="cold-bar">کلد بار</button>
+            <button class="category-nav-btn" data-target="mocktail">ماکتل و فیزی بار</button>
+            <button class="category-nav-btn" data-target="shake">شیک و اسموتی</button>
+            <button class="category-nav-btn" data-target="tea">چای و دمنوش</button>
+            <button class="category-nav-btn" data-target="pizza">پیتزا</button>
+            <button class="category-nav-btn" data-target="burger">برگر</button>
+            <button class="category-nav-btn" data-target="sandwich">ساندویچ</button>
+            <button class="category-nav-btn" data-target="fried">سوخاری</button>
+            <button class="category-nav-btn" data-target="potato">سیب زمینی</button>
+            <button class="category-nav-btn" data-target="pasta">پاستا</button>
+        </div>
+    </nav>
+
+    <main id="main" role="main">
+
+        <section class="menu-section" id="hot-coffee" aria-labelledby="hot-coffee-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="hot-coffee-title">☕ هات کافی</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="hot-coffee"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="hot-bar" aria-labelledby="hot-bar-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="hot-bar-title">🍵 هات بار</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="hot-bar"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="ice-coffee" aria-labelledby="ice-coffee-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="ice-coffee-title">🧊 آیس کافی</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="ice-coffee"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="cold-bar" aria-labelledby="cold-bar-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="cold-bar-title">🥤 کلد بار</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="cold-bar"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="mocktail" aria-labelledby="mocktail-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="mocktail-title">🍹 ماکتل و فیزی بار</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="mocktail"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="shake" aria-labelledby="shake-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="shake-title">🥤 شیک و اسموتی</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="shake"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="tea" aria-labelledby="tea-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="tea-title">🍃 چای و دمنوش</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="tea"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="pizza" aria-labelledby="pizza-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="pizza-title">🍕 پیتزا</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="pizza"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="burger" aria-labelledby="burger-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="burger-title">🍔 برگر</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="burger"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="sandwich" aria-labelledby="sandwich-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="sandwich-title">🥪 ساندویچ</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="sandwich"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="fried" aria-labelledby="fried-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="fried-title">🍗 سوخاری</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="fried"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="potato" aria-labelledby="potato-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="potato-title">🥔 سیب زمینی</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="potato"></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="pasta" aria-labelledby="pasta-title">
+            <div class="container">
+                <div class="menu-section-header">
+                    <h2 class="section-title" id="pasta-title">🍝 پاستا</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid" data-category="pasta"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا" title="بازگشت به بالا">
+        ↑
+    </button>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // MENU DATA (بروزرسانی شده با لیست تکمیلی)
+            // ============================================================
+            const menuData = {
+
+                // ---- هات کافی ----
+                'hot-coffee': [
+                    { name: 'اسپرسو', price: 145 },
+                    { name: 'اسپرسو اسپشیال', price: 187 },
+                    { name: 'اسپرسو کنپانا', price: 187 },
+                    { name: 'امریکنو', price: 145 },
+                    { name: 'لته', price: 185 },
+                    { name: 'کاپوچینو', price: 185 },
+                    { name: 'کورتادو', price: 178 },
+                    { name: 'بانانا کافی', price: 189 },
+                    { name: 'آفوگاتو', price: 210 }
+                ],
+
+                // ---- هات بار ----
+                'hot-bar': [
+                    { name: 'هات چاکلت', price: 165 },
+                    { name: 'بانانا چاکلت', price: 172 },
+                    { name: 'کنپانا چاکلت', price: 175 },
+                    { name: 'پینک چاکلت', price: 185 },
+                    { name: 'ماچا لته', price: 178 },
+                    { name: 'کوکوماچا', price: 255 },
+                    { name: 'ماسالا', price: 188 },
+                    { name: 'چای کرک', price: 161 },
+                    { name: 'ماسالا پسته', price: 288 }
+                ],
+
+                // ---- آیس کافی ----
+                'ice-coffee': [
+                    { name: 'آیس امریکنو', price: 145 },
+                    { name: 'آیس لته', price: 178 },
+                    { name: 'آیس بانانا کافی', price: 257 }
+                ],
+
+                // ---- کلد بار ----
+                'cold-bar': [
+                    { name: 'آیس لته ماچا', price: 257 },
+                    { name: 'استرابری ماچا', price: 268 },
+                    { name: 'آیس تارو', price: 257 },
+                    { name: 'اسپسو لته', price: 247 }
+                ],
+
+                // ---- ماکتل و فیزی بار ----
+                'mocktail': [
+                    { name: 'آیس تی', price: 135 },
+                    { name: 'موهیتو', price: 155 },
+                    { name: 'رد موهیتو', price: 171 },
+                    { name: 'کوکو موهیتو', price: 189 },
+                    { name: 'لیموناد', price: 145 },
+                    { name: 'پاپ', price: 188 },
+                    { name: 'دارک', price: 188 },
+                    { name: 'بلک راک', price: 188 },
+                    { name: 'درام', price: 188 },
+                    { name: 'نایت بیچ', price: 207 },
+                    { name: 'ردسان', price: 243 },
+                    { name: 'بلو فراگ', price: 257 },
+                    { name: 'برکه سبز', price: 215 }
+                ],
+
+                // ---- شیک و اسموتی ----
+                'shake': [
+                    { name: 'چوکونات', price: 350 },
+                    { name: 'دوبی چاکلت', price: 380 },
+                    { name: 'پینکی', price: 264 },
+                    { name: 'پرشین گلد', price: 278 },
+                    { name: 'کول', price: 185 },
+                    { name: 'تروپیکال', price: 185 },
+                    { name: 'اسکای', price: 248 }
+                ],
+
+                // ---- چای و دمنوش ----
+                'tea': [
+                    { name: 'چای سیاه', price: 78 },
+                    { name: 'چای سبز', price: 85 },
+                    { name: 'چای ترش', price: 85 },
+                    { name: 'دمنوش می‌خوش', price: 110 },
+                    { name: 'دمنوش رویای شبانه', price: 132 }
+                ],
+
+                // ---- پیتزا (دو قیمت) ----
+                'pizza': [
+                    { name: 'اسپشیال فکتوری', description: 'گوشت گوساله ریش شده + سینه مرغ + قارچ + پنیر خصوص + زیتون + فلفل دلمه', prices: { '۲۳ سانتی': 729, 'خانوادگی': 1425 } },
+                    { name: 'قارچ و گوشت', description: 'گوشت گوساله چرخ شده + قارچ + پنیر مخصوص + زیتون + فلفل دلمه', prices: { '۲۳ سانتی': 649, 'خانوادگی': 1295 } },
+                    { name: 'چیکن', description: 'سینه مرغ گریل شده + قارچ + پنیر مخصوص + زیتون + فلفل دلمه ای', prices: { '۲۳ سانتی': 619, 'خانوادگی': 1275 } },
+                    { name: 'پپرونی', description: 'پپرونی + پنیر مخصوص', prices: { '۲۳ سانتی': 599, 'خانوادگی': 1195 } },
+                    { name: 'چیکن آلفردو', description: 'مرغ آلفردو + پنیر پارمسان + پنیر مخصوص + زیتون + فلفل دلمه', prices: { '۲۳ سانتی': 649, 'خانوادگی': 1265 } },
+                    { name: 'رست بیف', description: 'گوشت گوساله ریش شده + قارچ + پنیر مخصوص + زیتون + فلفل دلمه', prices: { '۲۳ سانتی': 765, 'خانوادگی': 1497 } },
+                    { name: 'چیکن باربیکیو', description: 'چیکن باربیکیو + قارچ + پنیر مخصوص+ زیتون + فلفل دلمه', prices: { '۲۳ سانتی': 635, 'خانوادگی': 1275 } },
+                    { name: 'مخصوص', description: 'ژامپون گوشت + گوشت چرخ شده + قارچ + پنیر مخصوص + فلفل دلمه + زیتون', prices: { '۲۳ سانتی': 599, 'خانوادگی': 1175 } },
+                    { name: 'مخلوط', description: 'ژامبون گوشت + ژامبون مرغ + قارچ + پنیر مخصوص + فلفل دلمه + زیتون', prices: { '۲۳ سانتی': 549, 'خانوادگی': 1175 } }
+                ],
+
+                // ---- برگر (تک قیمت) ----
+                'burger': [
+                    { name: 'غول برگر', description: 'دو عدد برگر ۱۸۰ گرمی گوشت گوسفندی و گوساله + یک عدد فیله گریل + شده یا سوخاری + نان تست + سه ورق ژامبون + پنیر گودا + مخلفات + سیب زمینی', price: 899 },
+                    { name: 'مخصوص فکتوری', description: 'یک عدد برگر ۱۸۰ گرمی گوسفندی و گوساله + فیله گریل شده + ژامبون + نود درصد دودی + پنیر گودا + مخلفات + سیب زمینی', price: 639 },
+                    { name: 'ماشروم برگر', description: 'یک عدد برگر ۱۸۰ گرمی گوشت گوسفند و گوساله + فیله گریل شده  + ژامبون ۹۰ درصد دودی + پنیر گودا + مخلفات + سیب زمینی', price: 579 },
+                    { name: 'مینی برگر', description: 'نان مک‌دونالد + برگر ۱۰۰ درصد گوشت + مخلفات + سیب زمینی', price: 299 },
+                    { name: 'دوبل چیز برگر', description: 'دو عدد برگر ۱۸۰ گرمی گوشت گوسفندی و گوساله + سینه سوخاری + پنیر گودا + مخلفات + سیب زمینی', price: 749 },
+                    { name: 'امریکن برگر', description: 'یک عدد برگر ۱۸۰ گرمی گوشت گوسفندی و گوساله + مخلفات + سیب‌زمینی', price: 529 },
+                    { name: 'چیز برگر', description: 'یک عدد برگر ۱۸۰ گرمی گوشت گوسفندی و گوساله + پنیر گودا + مخلفات + سیب زمینی', price: 539 },
+                    { name: 'چیکن زینگر', description: 'سینه سوخاری + پنیر گودا + مخلفات + سیب زمینی', price: 539 }
+                ],
+
+                // ---- ساندویچ (تک قیمت) ----
+                'sandwich': [
+                    { name: 'بمب فکتوری', description: 'هات داگ + ژامبون گوشت و مرغ +  قارچ و پنیر میکس + سیب زمینی سرخ شده + چیکن برگر + مخلفات (دو نفره)', price: 645 },
+                    { name: 'هات داگ', description: 'هات داگ + مخلفات', price: 329 },
+                    { name: 'ابر هات داگ', description: 'دو عدد هات  داگ + قارچ و پنیر میکس + نان باگت + سیب زمینی + مخلفات', price: 459 },
+                    { name: 'ژامبون سرد', description: 'شش ورق ژامبون + مخلفات + نان باگت', price: 329 },
+                    { name: 'ژامبون تنوری', description: 'شش ورق ژامبون + پنیر پیتزا + نان باگت + مخلفات', price: 399 }
+                ],
+
+                // ---- سوخاری (تک قیمت) ----
+                'fried': [
+                    { name: 'دو تکه سینه نرمال', description: 'سیب زمینی سرخ شده + نان بروچن', price: 639 },
+                    { name: 'شش تکه فیله استریپس فکتوری', description: 'شش تکه فیله سوخاری با مرینیت مخصوص + سیب زمینی سرخ شده + نان بروچن', price: 999 },
+                    { name: 'چهار تکه فیله استریپس فکتوری', description: 'چهار تکه فیله سوخاری با مرینیت مخصوص + سیب زمینی سرخ شده + نان بروچن', price: 679 },
+                    { name: 'بشقاب گریل', description: 'دو تکه استیک مرغ طعم دار + سس قارچ + دورچین', price: 649 },
+                    { name: 'قارچ سوخاری', price: 265 }
+                ],
+
+                // ---- سیب زمینی (تک قیمت) ----
+                'potato': [
+                    { name: 'سیب زمینی چدار', description: 'سیصد گرم سیب زمینی فریز شده + سس چدار', price: 335 },
+                    { name: 'سیب زمینی ساده', price: 185 },
+                    { name: 'سیب و پنیر', price: 285 },
+                    { name: 'سیب زمینی سوخاری', price: 195 },
+                    { name: 'سیب زمینی سرخ شده خانگی', price: 185 },
+                    { name: 'نان سیر', description: 'نان پیتزای ۲۳ سانت + کره سیردار + پنیر پیتزا', price: 375 }
+                ],
+
+                // ---- پاستا (تک قیمت) ----
+                'pasta': [
+                    { name: 'پاستا چیکن آلفردو', price: 585 },
+                    { name: 'سالاد سزار', price: 0 }
+                ]
+            };
+
+            // ============================================================
+            // HELPERS
+            // ============================================================
+            function formatPrice(amount) {
+                if (amount === 0 || amount === undefined || amount === null) return '-';
+                return amount.toLocaleString('fa-IR');
+            }
+
+            // مسیر عکس با نام فارسی مستقیم در پوشه images
+            function getImagePath(productName) {
+                const base = 'images/';
+                // تبدیل فاصله به خط‌تیره و پشتیبانی کامل از حروف فارسی
+                const safeName = productName.trim().replace(/\s+/g, '-');
+                return base + safeName + '.jpg';
+            }
+
+            // ============================================================
+            // RENDER PRODUCTS
+            // ============================================================
+            function renderProducts() {
+                const grids = document.querySelectorAll('.product-grid');
+
+                grids.forEach(grid => {
+                    const category = grid.dataset.category;
+                    const items = menuData[category] || [];
+                    grid.innerHTML = '';
+
+                    items.forEach((item, index) => {
+                        const card = document.createElement('div');
+                        card.className = 'product-card';
+                        card.style.transitionDelay = (index * 60) + 'ms';
+
+                        const imgPath = getImagePath(item.name);
+
+                        // Image wrapper (بالای سر هر آیتم)
+                        const imgWrapper = document.createElement('div');
+                        imgWrapper.className = 'product-image-wrapper';
+
+                        const img = document.createElement('img');
+                        img.src = imgPath;
+                        img.alt = item.name;
+                        img.loading = 'lazy';
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                            const placeholder = document.createElement('div');
+                            placeholder.className = 'product-image-placeholder';
+                            placeholder.textContent = '📷 ' + item.name;
+                            this.parentNode.appendChild(placeholder);
+                        };
+                        imgWrapper.appendChild(img);
+                        card.appendChild(imgWrapper);
+
+                        // Body
+                        const body = document.createElement('div');
+                        body.className = 'product-body';
+
+                        const nameEl = document.createElement('h3');
+                        nameEl.className = 'product-name';
+                        nameEl.textContent = item.name;
+                        body.appendChild(nameEl);
+
+                        if (item.description && item.description.trim() !== '') {
+                            const descEl = document.createElement('p');
+                            descEl.className = 'product-description';
+                            descEl.textContent = item.description;
+                            body.appendChild(descEl);
+                        }
+
+                        if (item.prices) {
+                            const dual = document.createElement('div');
+                            dual.className = 'product-price-dual';
+                            for (const [label, value] of Object.entries(item.prices)) {
+                                const itemEl = document.createElement('span');
+                                itemEl.className = 'price-item';
+                                itemEl.innerHTML =
+                                    `<span class="price-label">${label}</span> <span class="price-value">${formatPrice(value)}</span>`;
+                                dual.appendChild(itemEl);
+                            }
+                            body.appendChild(dual);
+                        } else if (item.price !== undefined) {
+                            const priceEl = document.createElement('div');
+                            priceEl.className = 'product-price';
+                            priceEl.textContent = formatPrice(item.price);
+                            body.appendChild(priceEl);
+                        } else {
+                            const priceEl = document.createElement('div');
+                            priceEl.className = 'product-price';
+                            priceEl.textContent = '-';
+                            body.appendChild(priceEl);
+                        }
+
+                        card.appendChild(body);
+                        grid.appendChild(card);
+                    });
+                });
+            }
+
+            // ============================================================
+            // INTERSECTION OBSERVER (Fade-in cards)
+            // ============================================================
+            function initIntersectionObserver() {
+                const cards = document.querySelectorAll('.product-card');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+                cards.forEach(card => observer.observe(card));
+            }
+
+            // ============================================================
+            // CATEGORY NAVIGATION (Scroll & Active highlight)
+            // ============================================================
+            function initCategoryNav() {
+                const navBtns = document.querySelectorAll('.category-nav-btn');
+                const sections = document.querySelectorAll('.menu-section');
+
+                navBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        const target = this.dataset.target;
+                        const section = document.getElementById(target);
+                        if (section) {
+                            const offset = 80;
+                            const top = section.getBoundingClientRect().top + window.scrollY - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                        navBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.id;
+                            navBtns.forEach(btn => {
+                                btn.classList.remove('active');
+                                if (btn.dataset.target === id) {
+                                    btn.classList.add('active');
+                                    btn.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'nearest',
+                                        inline: 'center'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }, {
+                    threshold: 0.35,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                sections.forEach(section => observer.observe(section));
+            }
+
+            // ============================================================
+            // BACK TO TOP
+            // ============================================================
+            function initBackToTop() {
+                const btn = document.getElementById('backToTop');
+
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 600) {
+                        btn.classList.add('visible');
+                    } else {
+                        btn.classList.remove('visible');
+                    }
+                });
+
+                btn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // ============================================================
+            // DARK MODE (پیش‌فرض حالت شب)
+            // ============================================================
+            function initDarkMode() {
+                const toggle = document.getElementById('darkToggle');
+                const icon = document.getElementById('darkIcon');
+                const stored = localStorage.getItem('theme');
+
+                if (stored === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    icon.textContent = '☀️';
+                } else if (stored === 'light') {
+                    document.documentElement.removeAttribute('data-theme');
+                    icon.textContent = '🌙';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    icon.textContent = '☀️';
+                }
+
+                toggle.addEventListener('click', function() {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    if (isDark) {
+                        document.documentElement.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'light');
+                        icon.textContent = '🌙';
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                        icon.textContent = '☀️';
+                    }
+                });
+            }
+
+            // ============================================================
+            // LOADING SCREEN
+            // ============================================================
+            function hideLoader() {
+                const loader = document.getElementById('loaderWrapper');
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }
+
+            // ============================================================
+            // INIT
+            // ============================================================
+            document.addEventListener('DOMContentLoaded', function() {
+                renderProducts();
+                initCategoryNav();
+                initBackToTop();
+                initDarkMode();
+
+                setTimeout(() => {
+                    initIntersectionObserver();
+                }, 100);
+
+                setTimeout(hideLoader, 600);
+            });
+
+        })();
+    </script>
+
 </body>
 </html>
